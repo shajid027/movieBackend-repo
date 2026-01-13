@@ -2,12 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./utils/db.js');
+const movieRouter = require('./routes/movie.route.js');
+
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use('/api/movies', movieRouter);
 
 const PORT = process.env.PORT || 8000;
 
